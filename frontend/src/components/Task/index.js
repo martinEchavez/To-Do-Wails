@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TaskForm } from './TaskForm';
 import { TaskRow } from './TaskRow';
 
 const Task = () => {
@@ -75,40 +76,13 @@ const Task = () => {
   return (
     <div className="row">
       <div className="col-md-4">
-        <div className="card card-body">
-          <h4>Create Task</h4>
-          <form>
-            <div className="mb-2">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Name"
-                name="Name"
-                value={newTask.Name}
-                onChange={updateNewTask}
-                required
-              />
-            </div>
-            <div className="mb-2">
-              <textarea
-                type="text"
-                className="form-control"
-                placeholder="Description"
-                name="Description"
-                value={newTask.Description}
-                onChange={updateNewTask}
-              />
-            </div>
-            <div className="d-grid gap-2">
-              <button
-                className="btn btn-success btn-block"
-                onClick={editing ? (e) => editTask(e) : (e) => createTask(e)}
-              >
-                {editing ? 'Edit' : 'Save'}
-              </button>
-            </div>
-          </form>
-        </div>
+        <TaskForm
+          newTask={newTask}
+          editing={editing}
+          updateNewTask={updateNewTask}
+          editTask={editTask}
+          createTask={createTask}
+        />
       </div>
       <div className="col-md-8">
         <table className="table">

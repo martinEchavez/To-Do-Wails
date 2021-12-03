@@ -21,7 +21,7 @@ func GetDB() (db *sql.DB, task *newtask.SQLite, err error) {
 
 func (Serve) GetTask() []newtask.Task {
 	_, task, _ := GetDB()
-	tasks := task.Get()
+	tasks, _ := task.Get()
 	return tasks
 }
 

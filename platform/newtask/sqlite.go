@@ -10,6 +10,7 @@ type SQLite struct {
 
 func (s *SQLite) Get() ([]Task, error) {
 	rows, err := s.DB.Query("SELECT * FROM task")
+	defer rows.Close()
 	if err != nil {
 		return nil, err
 	} else {
